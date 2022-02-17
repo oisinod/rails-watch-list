@@ -1,9 +1,51 @@
-<h1><%= @list.name %></h1>
-<ul>
-<% @bookmarks.each do |bookmark| %>
-<li><%= " #{bookmark.id} - #{bookmark.movie.title} - #{bookmark.comment}" %></li> -
- <%= link_to "Delete this bookmark", bookmark_path(bookmark), method: :delete,  data: { confirm: "Are you sure?"} %>
-<% end %>
-</ul>
 
-<%= link_to "add a new bookmark", new_list_bookmark_path(@list) %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);">
+  <div class="container">
+    <h1><%= @list.name %></h1>
+    <span style= "color: white;" data-controller="typed-js"></span>
+  </div>
+</div>
+
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Add a new bookmark
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add a new movie</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for [ @list, @bookmark ] do |f| %>
+        <%= f.association :movie, input_html: { data: { controller: 'select2', select2_options_value: {tags: true}} } %>
+        <%= f.input :comment %>
+
+
+      </div>
+      <div class="modal-footer">
+      <%= f.submit "Submit bookmark", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="cards">
+<% @bookmarks.each do |bookmark| %>
+  <% 14.times do %>
+   <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1560109947-543149eceb16?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80)">
+    <h2><%= "#{bookmark.movie.title}" %></h2>
+    <p class="cards-description"><%= bookmark.comment %></p>
+    <%= link_to "Delete", bookmark_path(bookmark), class:"delete-bookmark btn btn-danger", method: :delete,  data: { confirm: "Are you sure?"} %>
+  </div>
+  <% end %>
+<% end %>
+</div>
