@@ -23,7 +23,7 @@
       </div>
       <div class="modal-body">
         <%= simple_form_for [ @list, @bookmark ] do |f| %>
-        <%= f.association :movie, input_html: { data: { controller: 'select2', select2_options_value: {tags: true}} } %>
+        <%= f.association :movie %>
         <%= f.input :comment %>
 
 
