@@ -1,0 +1,13 @@
+<div class="cards">
+<button type="button" class="add-new-bookmark" data-toggle="modal" data-target="#exampleModal">
+    <p>+</p>
+  </button>
+<% @bookmarks.each do |bookmark| %>
+
+   <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%=bookmark.movie.poster_url %>)">
+    <h2><%= "#{bookmark.movie.title}" %></h2>
+    <p class="cards-description"><%= bookmark.comment %></p>
+    <%= link_to "Delete", bookmark_path(bookmark), class:"delete-bookmark btn btn-danger", method: :delete,  data: { confirm: "Are you sure?"} %>
+  </div>
+<% end %>
+</div>

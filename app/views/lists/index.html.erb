@@ -8,12 +8,4 @@
   <%= link_to "Create a new list", new_list_path %>
 </div>
 
-<div class="cards">
-<% @lists.each do |list| %>
-
-   <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1560109947-543149eceb16?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80)">
-    <h2><%= link_to "#{list.name}", list_path(list) %></h2>
-  </div>
-
-<% end %>
-</div>
+<%= render "shared/list_cards" %>

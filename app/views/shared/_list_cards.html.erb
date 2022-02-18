@@ -1,0 +1,8 @@
+<div class="cards">
+<% @lists.each do |list| %>
+   <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cloudinary_url(list.photo.key) %>)">
+    <h2><%= link_to "#{list.name}", list_path(list) %></h2>
+  </div>
+
+<% end %>
+</div>
