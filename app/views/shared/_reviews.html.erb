@@ -1,0 +1,22 @@
+<div class="review-container">
+  <div class="reviews">
+            <% @reviews.each do |review| %>
+  <div class="notification">
+    <div class="notification-content">
+      <p><small> <%=" #{review.name} - #{review.created_at.strftime('%a %d %b %Y')} "%> </small></p>
+      <p><%= review.content %></p>
+    </div>
+  </div>
+
+            <% end %>
+            </div>
+
+            <div class="review-form">
+              <%= simple_form_for [ @list, @review ] do |f| %>
+              <%= f.input :name %>
+              <%= f.input :content %>
+              <%= f.submit "Submit review", class: "btn btn-primary" %>
+              <% end %>
+
+            </div>
+</div>

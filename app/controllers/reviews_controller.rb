@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to list_path(@list)
     else
-      render :new
+      redirect_to list_path(@list)
     end
   end
 
@@ -20,6 +20,6 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:comment)
+    params.require(:review).permit(:content, :name)
   end
 end

@@ -2,13 +2,7 @@
 <%= render "shared/new_bookmark_modal" %>
 <%= render "shared/movie_cards" %>
 
-        <%= simple_form_for [ @list, @review ] do |f| %>
-        <%= f.input :content %>
-        <%= f.submit "Submit review", class: "btn btn-primary" %>
-        <% end %>
 
-<ul>
-<% @reviews.each do |review| %>
-<li><%= review.content %></li>
-<% end %>
-</ul>
+
+
+<%= render "shared/reviews" %>
