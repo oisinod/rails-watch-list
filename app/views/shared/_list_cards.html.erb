@@ -1,3 +1,6 @@
+<button type="button" class="add-new-bookmark" data-toggle="modal" data-target="#exampleModal">
+    <p>+</p>
+  </button>
 <div class="cards">
 <% @lists.each do |list| %>
     <h2><%= link_to list_path(list) do %></h2>

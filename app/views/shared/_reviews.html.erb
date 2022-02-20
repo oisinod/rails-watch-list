@@ -4,6 +4,7 @@
   <div class="notification">
     <div class="notification-content">
       <p><small> <%=" #{review.name} - #{review.created_at.strftime('%a %d %b %Y')} "%> </small></p>
+      <p><%= review.rating %></p>
       <p><%= review.content %></p>
     </div>
   </div>
@@ -14,9 +15,18 @@
             <div class="review-form">
               <%= simple_form_for [ @list, @review ] do |f| %>
               <%= f.input :name %>
+              <%= f.input :rating, collection: 1..5, id: "ratings", input_html: {"data-controller": "bar-rating"}  %>
               <%= f.input :content %>
               <%= f.submit "Submit review", class: "btn btn-primary" %>
               <% end %>
 
             </div>
 </div>
+
+<select id="review-rating" data-controller = "bar-rating">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+</select>

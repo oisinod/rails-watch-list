@@ -2,6 +2,7 @@ class ListsController < ApplicationController
   before_action :set_list, only: [:show, :edit, :update, :destroy]
   def index
     @lists = List.all
+    @list = List.new
   end
 
   def show
@@ -9,11 +10,6 @@ class ListsController < ApplicationController
     @bookmark = Bookmark.new
     @reviews = @list.reviews
     @review = Review.new
-
-  end
-
-  def new
-    @list = List.new
   end
 
   def create
